@@ -4,18 +4,21 @@ import turtle as trtl
 import random
 import time
 #adds background
-background_lvl_one = "Screenshot 2026-05-06 7.55.57 PM.gif"
+background = "Screenshot 2026-05-06 7.55.57 PM.gif"
 wn = trtl.Screen()
-wn.bgpic(background_lvl_one)
+wn.bgpic(background)
 cloud = "2b88ec17-f912-40e5-9049-b3e73bfe1c2c.gif"
 
 wn.addshape(cloud)
 
+#speed of game(for faster game speed needs to be changed/increased)
+speed = 5
+
 # changes how many clouds there are 
 cloud_amount = 10
 platforms = []
-o = 250
-n = 300
+o = 225
+n = 275
 for i in range(cloud_amount):
   x = random.randint(-200,200)
   y = random.randint(o,n)
@@ -35,14 +38,14 @@ def move_platforms():
     t.right(90)
   for i in range(5):
     timerr()
-#speed of game(for faster game speed needs to be changed)
-speed = 1000
+
 def timerr():
   for t in platforms:
       t.penup()
-      t.forward(5)
+      t.forward(speed)
       t.pendown()
-  wn.ontimer(timerr,speed)
+  wn.ontimer(timerr,1000)
+ 
       
 move_platforms()
 
