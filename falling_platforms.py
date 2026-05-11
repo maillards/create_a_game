@@ -1,19 +1,35 @@
-
 #falling platforms code
 import turtle as trtl
 import random
 import time
 #adds background
-background = "Screenshot 2026-05-06 7.55.57 PM.gif"
+lvl = 1
+background_one = "landscape.gif"
+background_two = "city.gif"
+background_three = "space.gif"
 wn = trtl.Screen()
-wn.bgpic(background)
-cloud = "2b88ec17-f912-40e5-9049-b3e73bfe1c2c.gif"
-
+# sets background for every level
+if lvl == 1:
+  wn.bgpic(background_one)
+if lvl == 2:
+  wn.bgpic(background_two)
+if lvl == 3:
+  wn.bgpic(background_three)
+  
+cloud = "cloudd.gif"
+truck = "truck2.gif"
+rock = "rock2.gif"
 wn.addshape(cloud)
-
+wn.addshape(truck)
+wn.addshape(rock)
 #speed of game(for faster game speed needs to be changed/increased)
-speed = 5
-
+difficulty = 3
+if difficulty == 3:
+  speed = 15
+if difficulty == 2:
+  speed = 10
+if difficulty == 1:
+  speed = 5
 # changes how many clouds there are 
 cloud_amount = 10
 platforms = []
@@ -24,7 +40,12 @@ for i in range(cloud_amount):
   y = random.randint(o,n)
   o += 100
   n += 100
-  platform = trtl.Turtle(shape=cloud)
+  if lvl == 1:
+    platform = trtl.Turtle(shape=cloud)
+  if lvl == 2:
+    platform = trtl.Turtle(shape=truck)
+  if lvl == 3:
+    platform = trtl.Turtle(shape=rock)
   platform.hideturtle()
   platform.penup()
   
