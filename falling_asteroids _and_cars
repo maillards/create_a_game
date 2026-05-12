@@ -1,0 +1,65 @@
+# falling cars and asteroids
+import turtle as trtl
+wn = trtl.Screen()
+
+import random
+import time
+#placeholder for which lvl it is
+lvl = 3
+
+
+
+car_image = "car2.gif"
+asteroid = "rock3.gif"
+  
+wn.addshape(car_image)
+wn.addshape(asteroid)
+
+###addshape causes code to crash
+
+# changes how many cars there are 
+cars_amount = 4
+  
+cars = []
+o = 250
+n = 300
+for i in range(cars_amount):
+  x = random.randint(-200,200)
+  y = random.randint(o,n)
+  o += 375
+  n += 375
+  car = trtl.Turtle()
+  
+  
+  if lvl == 2:
+    car.shape(car_image)
+  if lvl == 3:
+    car.shape(asteroid)
+  
+  car.hideturtle()
+  car.penup()
+    
+  car.goto(x,y)
+  car.pendown()
+  car.showturtle()
+  cars.append(car)
+    
+def move_carss():
+  for t in cars:
+    t.right(90)
+  for i in range(5):
+    timerr()
+
+def timerr():
+  for t in cars:
+      t.penup()
+      t.forward(10)
+      t.pendown()
+  wn.ontimer(timerr,1000)
+   
+    
+        
+move_carss()
+  
+
+wn.mainloop()
